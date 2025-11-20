@@ -9,22 +9,22 @@ const Index = () => {
   const progress = (answeredQuestions.length / totalQuestions) * 100;
 
   return (
-    <div className="min-h-screen bg-background p-8">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-12 text-center">
-          <h1 className="mb-4 text-7xl font-black text-foreground tracking-tight">
+    <div className="min-h-screen bg-background p-4 md:p-8 flex flex-col">
+      <div className="mx-auto w-full max-w-7xl flex-1 flex flex-col">
+        <div className="mb-6 text-center">
+          <h1 className="mb-2 text-4xl md:text-5xl font-black text-foreground tracking-tight">
             Интерактивная Презентация
           </h1>
-          <p className="text-2xl text-foreground/70 mb-8">
+          <p className="text-lg md:text-xl text-foreground/70 mb-4">
             Выберите номер вопроса
           </p>
           
-          <div className="mx-auto max-w-md mb-6">
-            <div className="flex justify-between text-sm text-foreground/60 mb-2">
+          <div className="mx-auto max-w-md mb-4">
+            <div className="flex justify-between text-xs md:text-sm text-foreground/60 mb-1">
               <span>Прогресс</span>
               <span>{answeredQuestions.length} / {totalQuestions}</span>
             </div>
-            <div className="h-3 bg-muted rounded-full overflow-hidden border border-border">
+            <div className="h-2 bg-muted rounded-full overflow-hidden border border-border">
               <div
                 className="h-full bg-primary transition-all duration-500"
                 style={{ width: `${progress}%` }}
@@ -33,8 +33,8 @@ const Index = () => {
           </div>
 
           {answeredQuestions.length === totalQuestions && (
-            <div className="mb-6 p-6 bg-card rounded-xl border-2 border-primary shadow-card">
-              <p className="text-2xl font-bold text-primary mb-4">
+            <div className="mb-4 p-4 bg-card rounded-xl border-2 border-primary shadow-card">
+              <p className="text-xl font-bold text-primary mb-3">
                 🎉 Все вопросы отвечены!
               </p>
               <Button onClick={resetQuiz} variant="outline" size="lg">
@@ -44,7 +44,7 @@ const Index = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-10 gap-3 md:gap-4">
           {questions.map((question) => (
             <QuestionCard key={question.id} questionId={question.id} />
           ))}

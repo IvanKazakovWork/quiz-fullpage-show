@@ -29,8 +29,10 @@ const Question = () => {
   const handleAnswer = (answer: boolean) => {
     if (answer === question.isCorrect) {
       markAsAnswered(question.id);
+      navigate(`/answer/${question.id}`);
+    } else {
+      navigate("/");
     }
-    navigate("/");
   };
 
   return (
