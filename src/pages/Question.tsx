@@ -5,6 +5,7 @@ import { useQuiz } from "@/contexts/QuizContext";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useState, useEffect } from "react";
+import { playCorrectSound, playWrongSound } from "@/utils/sounds";
 
 const Question = () => {
   const { id } = useParams<{ id: string }>();
@@ -33,12 +34,14 @@ const Question = () => {
 
   const handlePersonSelect = (personId: number) => {
     if (personId === question.correctPersonId) {
+      playCorrectSound();
       setShowCorrect(true);
       setTimeout(() => {
         markAsAnswered(question.id);
         navigate(`/answer/${question.id}`);
       }, 800);
     } else {
+      playWrongSound();
       setShowWrong(true);
       setTimeout(() => {
         setShowWrong(false);
