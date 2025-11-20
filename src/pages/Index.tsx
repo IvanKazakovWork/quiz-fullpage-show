@@ -44,7 +44,7 @@ const Index = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-10 gap-3 md:gap-4">
+        <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-10 lg:grid-cols-10 gap-2 md:gap-3">
           {questions.map((question) => (
             <QuestionCard key={question.id} questionId={question.id} />
           ))}

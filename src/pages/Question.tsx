@@ -1,13 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { questions } from "@/data/questions";
+import { persons } from "@/data/persons";
 import { useQuiz } from "@/contexts/QuizContext";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
 
 const Question = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { markAsAnswered } = useQuiz();
+  const [hoveredPerson, setHoveredPerson] = useState<number | null>(null);
 
   const questionId = parseInt(id || "0");
   const question = questions.find((q) => q.id === questionId);
@@ -26,8 +29,8 @@ const Question = () => {
     );
   }
 
-  const handleAnswer = (answer: boolean) => {
-    if (answer === question.isCorrect) {
+  const handlePersonSelect = (personId: number) => {
+    if (personId === question.correctPersonId) {
       markAsAnswered(question.id);
       navigate(`/answer/${question.id}`);
     } else {
@@ -37,7 +40,7 @@ const Question = () => {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-8">
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-6xl">
         {/* Back Button */}
         <Button
           onClick={() => navigate("/")}
@@ -50,34 +53,40 @@ const Question = () => {
         </Button>
 
         {/* Question Card */}
-        <div className="bg-gradient-card rounded-3xl p-12 shadow-card border-2 border-border/50">
+        <div className="bg-card rounded-3xl p-12 shadow-card border-2 border-border/50">
           {/* Question Number */}
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 border-2 border-primary mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary mb-8">
             <span className="text-2xl font-bold text-primary">{question.id}</span>
           </div>
 
           {/* Question Text */}
-          <h1 className="text-5xl font-bold text-foreground mb-12 leading-tight">
+          <h1 className="text-4xl font-bold text-foreground mb-12 leading-tight">
             {question.text}
           </h1>
 
-          {/* Answer Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Button
-              onClick={() => handleAnswer(true)}
-              size="lg"
-              className="h-24 text-2xl font-bold bg-success hover:bg-success/90 text-success-foreground shadow-glow"
-            >
-              ✓ Верно
-            </Button>
-            <Button
-              onClick={() => handleAnswer(false)}
-              size="lg"
-              variant="destructive"
-              className="h-24 text-2xl font-bold shadow-glow"
-            >
-              ✗ Неверно
-            </Button>
+          {/* Person Selection Grid */}
+          <div className="grid grid-cols-5 gap-4 md:gap-6">
+            {persons.map((person) => (
+              <div key={person.id} className="relative">
+                <button
+                  onClick={() => handlePersonSelect(person.id)}
+                  onMouseEnter={() => setHoveredPerson(person.id)}
+                  onMouseLeave={() => setHoveredPerson(null)}
+                  className="w-full aspect-square rounded-full overflow-hidden border-2 border-border/50 hover:border-primary hover:scale-110 transition-all duration-300 shadow-card hover:shadow-glow"
+                >
+                  <img
+                    src={person.image}
+                    alt={person.name}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+                {hoveredPerson === person.id && (
+                  <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary px-3 py-1 rounded-lg shadow-glow whitespace-nowrap animate-fade-in">
+                    <span className="text-sm font-medium text-foreground">{person.name}</span>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
