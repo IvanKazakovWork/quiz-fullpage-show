@@ -1,7 +1,13 @@
+export interface Person {
+  id: number;
+  name: string;
+  image: string;
+}
+
 export interface Question {
   id: number;
   text: string;
-  isCorrect: boolean;
+  correctPersonId: number;
   answerText: string;
   answerImage: string;
 }
