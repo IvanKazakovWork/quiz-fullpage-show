@@ -11,32 +11,30 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background p-8">
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
         <div className="mb-12 text-center">
-          <h1 className="mb-4 text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          <h1 className="mb-4 text-7xl font-black text-foreground tracking-tight">
             Интерактивная Презентация
           </h1>
-          <p className="text-xl text-muted-foreground mb-6">
+          <p className="text-2xl text-foreground/70 mb-8">
             Выберите номер вопроса
           </p>
           
-          {/* Progress Bar */}
           <div className="mx-auto max-w-md mb-6">
-            <div className="flex justify-between text-sm text-muted-foreground mb-2">
+            <div className="flex justify-between text-sm text-foreground/60 mb-2">
               <span>Прогресс</span>
               <span>{answeredQuestions.length} / {totalQuestions}</span>
             </div>
-            <div className="h-3 bg-muted rounded-full overflow-hidden">
+            <div className="h-3 bg-muted rounded-full overflow-hidden border border-border">
               <div
-                className="h-full bg-gradient-primary transition-all duration-500"
+                className="h-full bg-primary transition-all duration-500"
                 style={{ width: `${progress}%` }}
               />
             </div>
           </div>
 
           {answeredQuestions.length === totalQuestions && (
-            <div className="mb-6 p-6 bg-gradient-card rounded-2xl border-2 border-success shadow-card">
-              <p className="text-2xl font-bold text-success mb-4">
+            <div className="mb-6 p-6 bg-card rounded-xl border-2 border-primary shadow-card">
+              <p className="text-2xl font-bold text-primary mb-4">
                 🎉 Все вопросы отвечены!
               </p>
               <Button onClick={resetQuiz} variant="outline" size="lg">
@@ -46,7 +44,6 @@ const Index = () => {
           )}
         </div>
 
-        {/* Questions Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {questions.map((question) => (
             <QuestionCard key={question.id} questionId={question.id} />
