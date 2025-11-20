@@ -18,8 +18,8 @@ const Answer = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4 md:p-8">
-      <div className="w-full max-w-4xl">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4 md:p-8 animate-fade-in">
+      <div className="w-full max-w-4xl animate-[scale-in_0.5s_ease-out]">
         <Button
           onClick={() => navigate("/")}
           variant="ghost"
@@ -30,9 +30,9 @@ const Answer = () => {
           Вернуться к вопросам
         </Button>
 
-        <div className="bg-card rounded-3xl overflow-hidden shadow-card border-2 border-primary">
+        <div className="bg-card rounded-3xl overflow-hidden shadow-card border-2 border-primary animate-[fade-in_0.4s_ease-out_0.2s_both]">
           {/* Image */}
-          <div className="w-full flex justify-center py-8">
+          <div className="w-full flex justify-center py-8 animate-[scale-in_0.6s_ease-out_0.3s_both]">
             <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-primary shadow-glow">
               <img
                 src={person.image}
