@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QuizProvider } from "./contexts/QuizContext";
 import Index from "./pages/Index";
 import Question from "./pages/Question";
+import Answer from "./pages/Answer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -17,12 +18,13 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/question/:id" element={<Question />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/question/:id" element={<Question />} />
+          <Route path="/answer/:id" element={<Answer />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
         </BrowserRouter>
       </QuizProvider>
     </TooltipProvider>
