@@ -4,13 +4,15 @@ import { persons } from "@/data/persons";
 import { useQuiz } from "@/contexts/QuizContext";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Question = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { markAsAnswered } = useQuiz();
   const [hoveredPerson, setHoveredPerson] = useState<number | null>(null);
+  const [showWrong, setShowWrong] = useState(false);
+  const [showCorrect, setShowCorrect] = useState(false);
 
   const questionId = parseInt(id || "0");
   const question = questions.find((q) => q.id === questionId);
@@ -31,10 +33,17 @@ const Question = () => {
 
   const handlePersonSelect = (personId: number) => {
     if (personId === question.correctPersonId) {
-      markAsAnswered(question.id);
-      navigate(`/answer/${question.id}`);
+      setShowCorrect(true);
+      setTimeout(() => {
+        markAsAnswered(question.id);
+        navigate(`/answer/${question.id}`);
+      }, 800);
     } else {
-      navigate("/");
+      setShowWrong(true);
+      setTimeout(() => {
+        setShowWrong(false);
+        navigate("/");
+      }, 3000);
     }
   };
 
@@ -89,6 +98,31 @@ const Question = () => {
             ))}
           </div>
         </div>
+
+        {/* Wrong Answer Overlay */}
+        {showWrong && (
+          <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 animate-fade-in">
+            <div className="text-center animate-[scale-in_0.5s_ease-out]">
+              <div className="text-8xl md:text-9xl font-black text-primary mb-4 animate-pulse">
+                ✕
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black text-white animate-[fade-in_0.3s_ease-out_0.2s_both]">
+                НЕВЕРНО
+              </h2>
+            </div>
+          </div>
+        )}
+
+        {/* Correct Answer Overlay */}
+        {showCorrect && (
+          <div className="fixed inset-0 bg-primary/20 flex items-center justify-center z-50 animate-fade-in">
+            <div className="text-center">
+              <div className="text-9xl animate-[scale-in_0.6s_ease-out] text-primary">
+                ✓
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
