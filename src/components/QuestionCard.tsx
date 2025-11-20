@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useQuiz } from "@/contexts/QuizContext";
 import { questions } from "@/data/questions";
+import { persons } from "@/data/persons";
 import { cn } from "@/lib/utils";
 
 interface QuestionCardProps {
@@ -12,6 +13,7 @@ export const QuestionCard = ({ questionId }: QuestionCardProps) => {
   const { answeredQuestions } = useQuiz();
   const isAnswered = answeredQuestions.includes(questionId);
   const question = questions.find((q) => q.id === questionId);
+  const person = question ? persons.find((p) => p.id === question.correctPersonId) : null;
 
   return (
     <button
@@ -25,11 +27,11 @@ export const QuestionCard = ({ questionId }: QuestionCardProps) => {
           : "border-border/50 hover:scale-105 hover:shadow-glow hover:border-primary cursor-pointer bg-card"
       )}
     >
-      {isAnswered && question ? (
+      {isAnswered && person ? (
         <div className="absolute inset-0">
           <img
-            src={question.answerImage}
-            alt={`Ответ ${questionId}`}
+            src={person.image}
+            alt={person.name}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

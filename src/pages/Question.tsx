@@ -39,8 +39,8 @@ const Question = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-8">
-      <div className="w-full max-w-6xl">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4 md:p-6">
+      <div className="w-full max-w-5xl">
         {/* Back Button */}
         <Button
           onClick={() => navigate("/")}
@@ -53,26 +53,26 @@ const Question = () => {
         </Button>
 
         {/* Question Card */}
-        <div className="bg-card rounded-3xl p-12 shadow-card border-2 border-border/50">
+        <div className="bg-card rounded-3xl p-6 md:p-8 shadow-card border-2 border-border/50">
           {/* Question Number */}
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary mb-8">
-            <span className="text-2xl font-bold text-primary">{question.id}</span>
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 border-2 border-primary mb-4">
+            <span className="text-xl font-bold text-primary">{question.id}</span>
           </div>
 
           {/* Question Text */}
-          <h1 className="text-4xl font-bold text-foreground mb-12 leading-tight">
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-6 leading-tight">
             {question.text}
           </h1>
 
           {/* Person Selection Grid */}
-          <div className="grid grid-cols-5 gap-4 md:gap-6">
+          <div className="grid grid-cols-5 gap-3 md:gap-4 max-w-3xl mx-auto">
             {persons.map((person) => (
               <div key={person.id} className="relative">
                 <button
                   onClick={() => handlePersonSelect(person.id)}
                   onMouseEnter={() => setHoveredPerson(person.id)}
                   onMouseLeave={() => setHoveredPerson(null)}
-                  className="w-full aspect-square rounded-full overflow-hidden border-2 border-border/50 hover:border-primary hover:scale-110 transition-all duration-300 shadow-card hover:shadow-glow"
+                  className="w-full aspect-square rounded-full overflow-hidden border-2 border-border/50 hover:border-primary hover:scale-105 transition-all duration-300 shadow-card hover:shadow-glow"
                 >
                   <img
                     src={person.image}
@@ -81,8 +81,8 @@ const Question = () => {
                   />
                 </button>
                 {hoveredPerson === person.id && (
-                  <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary px-3 py-1 rounded-lg shadow-glow whitespace-nowrap animate-fade-in">
-                    <span className="text-sm font-medium text-foreground">{person.name}</span>
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-card border-2 border-primary px-2 py-1 rounded-lg shadow-glow whitespace-nowrap animate-fade-in z-10">
+                    <span className="text-xs md:text-sm font-medium text-foreground">{person.name}</span>
                   </div>
                 )}
               </div>
