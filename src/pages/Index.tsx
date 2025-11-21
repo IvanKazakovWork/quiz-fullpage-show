@@ -13,7 +13,7 @@ const Index = () => {
       <div className="mx-auto w-full max-w-7xl flex-1 flex flex-col">
         <div className="mb-6 text-center">
           <h1 className="mb-2 text-4xl md:text-5xl font-black text-foreground tracking-tight">
-            Интерактивная Презентация
+            игра «Инсайдеры»
           </h1>
           <p className="text-lg md:text-xl text-foreground/70 mb-4">
             Выберите номер вопроса
