@@ -2,17 +2,10 @@ import { QuestionCard } from "@/components/QuestionCard";
 import { useQuiz } from "@/contexts/QuizContext";
 import { questions } from "@/data/questions";
 import { Button } from "@/components/ui/button";
-import { useMemo } from "react";
 
 const Index = () => {
   const { resetQuiz, answeredQuestions } = useQuiz();
-  
-  // Randomize questions order once on load
-  const shuffledQuestions = useMemo(() => {
-    return [...questions].sort(() => Math.random() - 0.5);
-  }, []);
-  
-  const totalQuestions = shuffledQuestions.length;
+  const totalQuestions = questions.length;
   const progress = (answeredQuestions.length / totalQuestions) * 100;
 
   return (
@@ -52,7 +45,7 @@ const Index = () => {
         </div>
 
         <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-10 lg:grid-cols-10 gap-2 md:gap-3">
-          {shuffledQuestions.map((question) => (
+          {questions.map((question) => (
             <QuestionCard key={question.id} questionId={question.id} />
           ))}
         </div>
