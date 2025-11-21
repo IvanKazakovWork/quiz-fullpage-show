@@ -21,8 +21,7 @@ import answer19 from "@/assets/answer-1.jpg";
 import answer20 from "@/assets/answer-20.jpg";
 
 // Placeholder для дополнительных изображений ответов (21-30)
-const placeholderAnswer = "data:image/svg+xml,%3Csvg xmlns='http://www.worg/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23000000'/%3E%3C/svg%3E";
-const placeholderAnswer = answer20
+const placeholderAnswer = answer20;
 
 export const questions: Question[] = [
   { id: 1, text: "До поступления в университет жила в гетто-районе, фристайлила и писала рэп с друзьями, ходила на разборки и меня один раз чуть не убили", correctPersonId: 1, answerText: "Правильный ответ! Это Даша Симонова!.", answerImage: answer2 },
