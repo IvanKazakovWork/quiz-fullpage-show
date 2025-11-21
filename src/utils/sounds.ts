@@ -3,11 +3,21 @@
 // public/sounds/correct.mp3
 // public/sounds/wrong.mp3
 
+// Preload audio files to avoid delay
+const correctAudio = new Audio('/sounds/correct.mp3');
+const wrongAudio = new Audio('/sounds/wrong.mp3');
+
+correctAudio.volume = 0.5;
+wrongAudio.volume = 0.5;
+
+// Preload the audio files
+correctAudio.load();
+wrongAudio.load();
+
 export const playCorrectSound = () => {
   try {
-    const audio = new Audio('/sounds/correct.mp3');
-    audio.volume = 0.5;
-    audio.play();
+    correctAudio.currentTime = 0; // Reset to start
+    correctAudio.play();
   } catch (error) {
     console.error('Error playing correct sound:', error);
   }
@@ -15,9 +25,8 @@ export const playCorrectSound = () => {
 
 export const playWrongSound = () => {
   try {
-    const audio = new Audio('/sounds/wrong.mp3');
-    audio.volume = 0.5;
-    audio.play();
+    wrongAudio.currentTime = 0; // Reset to start
+    wrongAudio.play();
   } catch (error) {
     console.error('Error playing wrong sound:', error);
   }
