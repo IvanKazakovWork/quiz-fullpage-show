@@ -1,10 +1,13 @@
 import { Person } from "@/types/quiz";
+import answer1 from "@/assets/answer-1.jpg";
 
 // Placeholder image - замените на реальные изображения людей
 const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect width='200' height='200' fill='%23000000'/%3E%3C/svg%3E";
-  
+
+
+
 export const persons: Person[] = [
-  { id: 1, name: "Даша Симонова", image: placeholderImage },
+  { id: 1, name: "Даша Симонова", image: answer1 },
   { id: 2, name: "Вика", image: placeholderImage },
   { id: 3, name: "Олеся", image: placeholderImage },
   { id: 4, name: "Лиза", image: placeholderImage },
