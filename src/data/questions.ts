@@ -1,27 +1,28 @@
 import { Question } from "@/types/quiz";
-import answer1 from "@/assets/answer-jpg";
+import answer1 from "@/assets/answer-1.jpg";
 import answer2 from "@/assets/answer-2.jpg";
-import answer3 from "@/assets/answer-jpg";
-import answer4 from "@/assets/answer-jpg";
-import answer5 from "@/assets/answer-jpg";
-import answer6 from "@/assets/answer-jpg";
-import answer7 from "@/assets/answer-jpg";
-import answer8 from "@/assets/answer-jpg";
-import answer9 from "@/assets/answer-jpg";
-import answer10 from "@/assets/answer-jpg";
-import answer11 from "@/assets/answer-1jpg";
-import answer12 from "@/assets/answer-jpg";
-import answer13 from "@/assets/answer-1jpg";
-import answer14 from "@/assets/answer-1jpg";
-import answer15 from "@/assets/answer-1jpg";
-import answer16 from "@/assets/answer-1jpg";
-import answer17 from "@/assets/answer-1jpg";
-import answer18 from "@/assets/answer-1jpg";
-import answer19 from "@/assets/answer-1jpg";
+import answer3 from "@/assets/answer-1.jpg";
+import answer4 from "@/assets/answer-1.jpg";
+import answer5 from "@/assets/answer-1.jpg";
+import answer6 from "@/assets/answer-1.jpg";
+import answer7 from "@/assets/answer-1.jpg";
+import answer8 from "@/assets/answer-1.jpg";
+import answer9 from "@/assets/answer-1.jpg";
+import answer10 from "@/assets/answer-1.jpg";
+import answer11 from "@/assets/answer-1.jpg";
+import answer12 from "@/assets/answer-1.jpg";
+import answer13 from "@/assets/answer-1.jpg";
+import answer14 from "@/assets/answer-1.jpg";
+import answer15 from "@/assets/answer-1.jpg";
+import answer16 from "@/assets/answer-1.jpg";
+import answer17 from "@/assets/answer-1.jpg";
+import answer18 from "@/assets/answer-1.jpg";
+import answer19 from "@/assets/answer-1.jpg";
 import answer20 from "@/assets/answer-20.jpg";
 
 // Placeholder для дополнительных изображений ответов (21-30)
 const placeholderAnswer = "data:image/svg+xml,%3Csvg xmlns='http://www.worg/2000/svg' width='800' height='600'%3E%3Crect width='800' height='600' fill='%23000000'/%3E%3C/svg%3E";
+const placeholderAnswer = answer20
 
 export const questions: Question[] = [
   { id: 1, text: "До поступления в университет жила в гетто-районе, фристайлила и писала рэп с друзьями, ходила на разборки и меня один раз чуть не убили", correctPersonId: 1, answerText: "Правильный ответ! Это Даша Симонова!.", answerImage: answer2 },
